@@ -1,0 +1,18 @@
+# Plain static HTML/CSS/JS site: no framework, no package manager, no build step.
+# Pages live in html_files/ and reference stylesheets via ../css/, so the
+# repository root is published as-is to keep those relative paths working.
+[build]
+  publish = "."
+
+# There is no index.html at the repository root; send visitors to the real
+# home page. A redirect (not a rewrite) keeps relative asset paths correct.
+[[redirects]]
+  from = "/"
+  to = "/html_files/index.html"
+  status = 302
+
+# The shared header links to home.html, which doesn't exist; point it at the home page.
+[[redirects]]
+  from = "/html_files/home.html"
+  to = "/html_files/index.html"
+  status = 302
